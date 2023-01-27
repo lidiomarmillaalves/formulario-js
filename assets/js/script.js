@@ -1,5 +1,4 @@
 
-
 class Form {
     items = [];
     method = 'GET';
@@ -34,7 +33,7 @@ class Input {
     _type = 'text';
     required = false;
 
-    constructor(name, label){
+    constructor(name, label) {
         this.name = name;
         this.label = label;
 
@@ -45,7 +44,7 @@ class Input {
     }
 
     set type(t) {
-        if(['text', 'password', 'email', 'submit'].includes(t)){ 
+        if(['text', 'password', 'email', 'submit'].includes(t)) { 
             this._type = t;
         } else {
             throw new Error('input "${t}" type dosent exist.')
@@ -53,7 +52,7 @@ class Input {
     }
 
     render(formElement) {
-        let el = document.createElemente('input');
+        let el = document.createElement('input');
         el.type = this.type;
         el.name = this.name;
         el.placeholder = this.label;
@@ -80,7 +79,7 @@ class Button extends Input {
 //Implementação
 
 //Formulário
-let form = new Input('.formArea', 'POST', 'https://site.com.br')
+let form = new Form('.formArea', 'POST', 'https://site.com.br');
 
 //Email
 let email = new Input("email", 'Digite seu e-email');
@@ -99,5 +98,3 @@ let button = new Button('Enviar');
 form.addItem(button);
 
 form.render();
-
-console.log(form.items.length);
